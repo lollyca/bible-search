@@ -1,5 +1,5 @@
 //king james de4e12af7f28f599-02
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Verse } from "../model/verse";
 
 export default function TestFetcher() {
@@ -7,8 +7,8 @@ export default function TestFetcher() {
     const [versesArray, setVersesArray] = useState<Verse[]>([]);
 
 
-    const updateTextSearch = (evt) => {
-        setTextSearch(evt.target.value);
+    const updateTextSearch = (e: ChangeEvent<HTMLInputElement>) => {
+        setTextSearch(e.target.value);
     };
     console.log(searchText)
 
