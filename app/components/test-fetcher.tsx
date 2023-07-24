@@ -19,7 +19,7 @@ export default function TestFetcher() {
         const options = {
             method: 'GET',
             headers: {
-                'api-key': 'bf3a8b1c3880ddc6f61cfd9e1ead8fe9'
+                'api-key': process.env.NEXT_PUBLIC_API_KEY || ''
             }
         };
 
