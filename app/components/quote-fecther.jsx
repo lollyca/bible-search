@@ -1,7 +1,7 @@
 const RANDOM_QUOTE_URL = "https://inspo-quotes-api.herokuapp.com/quotes/random";
 import { useState, useEffect } from "react";
 
-export default function VerseFetcher () {
+export default function QuoteFetcher () {
     const [quote, setQuote] = useState({});
     
     async function fetchQuote () {
