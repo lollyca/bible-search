@@ -1,8 +1,10 @@
 //king james de4e12af7f28f599-02
 import { useState } from "react";
+import { Verse } from "../model/verse";
+
 export default function TestFetcher() {
     const [searchText, setTextSearch] = useState("love");
-    const [versesArray, setVersesArray] = useState([]);
+    const [versesArray, setVersesArray] = useState<Verse[]>([]);
 
 
     const updateTextSearch = (evt) => {
@@ -24,7 +26,7 @@ export default function TestFetcher() {
         try {
             const response = await fetch(url, options);
             const result = await response.json();
-            const verses = result.data.verses
+            const verses = result.data.verses as Verse[];
             console.log(verses);
             setVersesArray(verses);
         } catch (error) {
