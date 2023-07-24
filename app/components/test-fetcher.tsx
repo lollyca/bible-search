@@ -9,7 +9,6 @@ export default function TestFetcher() {
     console.log(searchText)
 
     async function fetchSomething() {
-        const searchText = "will";
         const offset = 10;
         const url = `https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=${searchText}&offset=${offset}`;
         const options = {
@@ -30,21 +29,8 @@ export default function TestFetcher() {
 
     return (
         <div>
-            <h1>Pega o livro</h1><input type="text" placeholder="username" valeu={searchText} onChange={updateTextSearch} id="username"/>
+            <h1>Pega o livro</h1><input type="text" placeholder="username" value={searchText} onChange={updateTextSearch} id="username"/>
             <button onClick={fetchSomething}>Click</button>
         </div>
     )
 }
-
-// export default function UserNameForm() {
-//     const [username, setUserName] = useState("lelo");
-//     const updateUserName = (evt) => {
-//       setUserName(evt.target.value);
-//     } ;
-//     return (
-//       <div>
-//         <label htmlFor="username">Enter a username</label>
-//         <input type="text" placeholder="username" valeu={username} onChange={updateUserName} id="username"/>
-//       </div>
-//     )
-//   }
