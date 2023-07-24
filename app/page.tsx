@@ -9,7 +9,7 @@ export default function Home() {
       <div className="row m-0 p-0 h-25">
         <img style={{ objectFit: "cover", height: "300px" }} src="/banner.jpeg" alt="" />
       </div>
-      <QuoteFethcer />
+      {/* <QuoteFethcer /> */}
       <TestFetcher />
     </div>
   )

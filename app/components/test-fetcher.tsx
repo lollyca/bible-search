@@ -12,7 +12,8 @@ export default function TestFetcher() {
 
     async function fetchSomething() {
         const offset = 300;
-        const url = `https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=${searchText}&offset=${offset}`;
+        const limit = 100;
+        const url = `https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=${searchText}&offset=${offset}&limit=${limit}`;
         const options = {
             method: 'GET',
             headers: {
