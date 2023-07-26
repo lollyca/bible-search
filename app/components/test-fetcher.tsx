@@ -13,21 +13,13 @@ export default function TestFetcher() {
     console.log(searchText)
 
     async function fetchSomething() {
-        const offset = 300;
-        const limit = 100;
-        const url = `https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=${searchText}&offset=${offset}&limit=${limit}`;
-        const options = {
-            method: 'GET',
-            headers: {
-                'api-key': process.env.NEXT_PUBLIC_API_KEY || ''
-            }
-        };
+
+        const url = `api/search?query=${searchText}&`
 
         try {
-            const response = await fetch(url, options);
+            const response = await fetch(url);
             const result = await response.json();
-            const verses = result.data.verses as Verse[];
-            console.log(verses);
+            const verses = result.verses as Verse[];
             setVersesArray(verses);
         } catch (error) {
             console.error(error);
