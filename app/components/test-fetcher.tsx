@@ -26,11 +26,6 @@ export default function TestFetcher() {
         }
     }
 
-    function highlight (text) {
-        const regex = new RegExp (searchText, 'gi');
-        return text.replace(regex, (match) => `<span className="highlight">${match}</span>`);
-    }
-
     return (
         <div>
             <h1>Key Word:</h1>
