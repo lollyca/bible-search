@@ -14,9 +14,7 @@ export default function TestFetcher() {
     console.log(searchText)
 
     async function fetchSomething() {
-
         const url = `api/search?query=${searchText}&`
-
         try {
             const response = await fetch(url);
             const result = await response.json();
@@ -28,6 +26,10 @@ export default function TestFetcher() {
         }
     }
 
+    function highlight (text) {
+        const regex = new RegExp (searchText, 'gi');
+        return text.replace(regex, (match) => `<span className="highlight">${match}</span>`);
+    }
 
     return (
         <div>
@@ -35,10 +37,12 @@ export default function TestFetcher() {
             <input type="text" placeholder="username" value={searchText} onChange={updateTextSearch} id="username" />
             <button onClick={fetchSomething}>Click</button>
             <h3>Results:</h3>
-                {versesArray.map((verse) => (
-                    // <li >{verse.text}</li>
-                    <BasicCard key={verse.id} text={verse.text} reference={verse.reference} searchText={searchText}/>
-                    ))}
+                {versesArray.map((verse) => {
+                    // let text = verse.text
+                    // let finalText = highlight(text);
+                    return <BasicCard key={verse.id} match={searchText} text={verse.text} reference={verse.reference} searchText={searchText}/>
+                }
+                )}
         </div>
     )
 }

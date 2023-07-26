@@ -16,61 +16,20 @@ const bull = (
 
 export default function BasicCard(props) {
 
-  function findWord() {
-    const text = props.text;
-    const wordToSearch = props.searchText;
-    const regex = new RegExp(`\\b${wordToSearch}\\b`, 'gi');
-    const occurrences = text.match(regex);
-
-    if (occurrences) {
-      return `Found ${occurrences.length} occurrences of '${wordToSearch}'`;
-    } else {
-      return `Word not found`;
-    }
-
-  }
-
-  // function setSpecialColor() {
-  //   let style = {}
-  //   let findWord = "";
-  //   for (let word of props.text) {
-  //     if (word === props.searchText) {
-  //       findWord = word;
-  //     }
-  //   }
-  //   if (findWord) {
-  //     style = { color: "green" };
-  //   }
-  //   return style;
-  // }
-
-
-
-
-  // const style = setSpecialColor();
-  const specialWord = findWord()
-
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {props.reference}
         </Typography>
-        {/* <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
-        </Typography> */}
-        {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-        </Typography> */}
         <Typography variant="body2">
-          {props.text}
-          <br />
-          {/* {'"a benevolent smile"'} */}
+          {props.text.split(' ').map((x: string) =>
+            x.includes(props.match)
+              ? <><span style={{ backgroundColor: 'yellow', padding: '1px' }}>{x}</span>&nbsp;</>
+              : x + ' '
+          )}
         </Typography>
       </CardContent>
-      {/* <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions> */}
     </Card>
   );
 }
