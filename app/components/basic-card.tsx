@@ -14,14 +14,20 @@ const bull = (
   </Box>
 );
 
-export default function BasicCard({ text, match, reference }: any) {
+interface BasicCardProps {
+  text: string;
+  match: string;
+  reference: string;
+}
+
+export default function BasicCard({ text, match, reference }: BasicCardProps) {
 
   const parts = getHighlightedText(text, match);
 
   function getHighlightedText(text: string, highlight: string) {
     const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
     console.log(parts);
-    
+
     return <span>{parts.map(part => part.toLowerCase() === highlight.toLowerCase() ? <span style={{ backgroundColor: 'yellow', padding: '1px' }}><b>{part}</b></span> : part)}</span>;
   }
 

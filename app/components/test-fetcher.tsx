@@ -35,7 +35,7 @@ export default function TestFetcher() {
                 {versesArray.map((verse) => {
                     // let text = verse.text
                     // let finalText = highlight(text);
-                    return <BasicCard key={verse.id} match={searchText} text={verse.text} reference={verse.reference} searchText={searchText}/>
+                    return <BasicCard key={verse.id} match={searchText} text={verse.text} reference={verse.reference} />
                 }
                 )}
         </div>
