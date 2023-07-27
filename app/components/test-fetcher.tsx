@@ -2,6 +2,10 @@
 import { ChangeEvent, useState } from "react";
 import { Verse } from "../model/verse";
 import BasicCard from "./basic-card";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 export default function TestFetcher() {
     const [searchText, setTextSearch] = useState("love");
@@ -29,15 +33,32 @@ export default function TestFetcher() {
     return (
         <div>
             <h1>Key Word:</h1>
-            <input type="text" placeholder="username" value={searchText} onChange={updateTextSearch} id="username" />
-            <button onClick={fetchSomething}>Click</button>
+            <div className="d-flex align-items-center">
+
+                <Box
+                    component="form"
+                    sx={{
+                        '& > :not(style)': { m: 1, width: '35ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                >
+                    <TextField id="outlined-basic" value={searchText} onChange={updateTextSearch} label="Search" variant="outlined" />
+                </Box>
+
+
+                <Stack direction="row" sx={{height: "56px"}}>
+                    <Button onClick={fetchSomething} variant="contained">Search</Button>
+                </Stack>
+            </div>
+
             <h3>Results:</h3>
-                {versesArray.map((verse) => {
-                    // let text = verse.text
-                    // let finalText = highlight(text);
-                    return <BasicCard key={verse.id} match={searchText} text={verse.text} reference={verse.reference} />
-                }
-                )}
+            {versesArray.map((verse) => {
+                // let text = verse.text
+                // let finalText = highlight(text);
+                return <BasicCard key={verse.id} match={searchText} text={verse.text} reference={verse.reference} />
+            }
+            )}
         </div>
     )
 }
