@@ -1,5 +1,5 @@
 //king james de4e12af7f28f599-02
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { Verse } from "../model/verse";
 import BasicCard from "./basic-card";
 import Stack from '@mui/material/Stack';
@@ -13,6 +13,7 @@ import "../styles.css"
 
 export default function TestFetcher() {
     const [searchText, setTextSearch] = useState("");
+    const [firstSearch, setFirstSearch] = useState(true);
     const [versesArray, setVersesArray] = useState<Verse[]>([]);
     // const [isClicked, setIsClicked] = useState(false);
 
@@ -29,47 +30,64 @@ export default function TestFetcher() {
             console.log(verses)
             setVersesArray(verses);
             // setIsClicked(true);
+            setFirstSearch(false);
         } catch (error) {
             console.error(error);
         }
     }
 
+    function onTextKeyDown(e: KeyboardEvent) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            fetchSomething();
+        }
+    }
+
     return (
-        <div className="bgBrand">
-            <div className="d-flex justify-content-center mt-4 mainText" style={{ fontSize: "xxx-large" }}>Key Word:</div>
+        <div>
+            <div className="bgBrand">
+                <div className="d-flex justify-content-center pt-4 mainText" style={{ fontSize: "xxx-large" }}>Key Word:</div>
 
-            <div className="d-flex justify-content-center align-items-center mb-3">
+                <div className="d-flex justify-content-center align-items-center pb-3">
 
-                <Box
-                    component="form"
-                    sx={{
-                        '& > :not(style)': { m: 1, width: '50ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
+                    <Box
 
-                >
-                    <TextField id="outlined-basic" value={searchText} onChange={updateTextSearch} label="Search" variant="filled" />
-                </Box>
+                        component="form"
+                        sx={{
+                            '& > :not(style)': { m: 1, width: '50ch' },
+                        }}
+                        noValidate
+                        autoComplete="off"
+
+                    >
+                        <TextField id="outlined-basic" onKeyDown={onTextKeyDown} value={searchText} onChange={updateTextSearch} label="Search" variant="filled" />
+                    </Box>
 
 
-                <Stack direction="row" sx={{ height: "56px" }}>
-                    <Button onClick={fetchSomething} variant="contained" color="primary">
-                        <SearchOutlinedIcon />
-                    </Button>
-                </Stack>
+                    <Stack direction="row" sx={{ height: "56px" }}>
+                        <Button onClick={fetchSomething} variant="contained" color="primary">
+                            <SearchOutlinedIcon />
+                        </Button>
+                    </Stack>
+                </div>
+
+
+
+
+                {/* {isClicked && <h3>Results:</h3>} */}
+                {versesArray.length > 0 && versesArray.map((verse) => {
+                    // let text = verse.text
+                    // let finalText = highlight(text);
+                    return <BasicCard key={verse.id} match={searchText} text={verse.text} reference={verse.reference} />
+                })}
+
+
             </div>
-
-
-
-
-            {/* {isClicked && <h3>Results:</h3>} */}
-            {versesArray.map((verse) => {
-                // let text = verse.text
-                // let finalText = highlight(text);
-                return <BasicCard key={verse.id} match={searchText} text={verse.text} reference={verse.reference} />
+            {!firstSearch && versesArray.length === 0 &&
+                <div className="h-100 w-100 d-flex justify-content-center align-items-center">
+                    <h5>Nothing here :(</h5>
+                </div>
             }
-            )}
         </div>
     )
 }
