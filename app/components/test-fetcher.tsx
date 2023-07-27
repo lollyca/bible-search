@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
+import "../styles.css"
+
 export default function TestFetcher() {
     const [searchText, setTextSearch] = useState("love");
     const [versesArray, setVersesArray] = useState<Verse[]>([]);
@@ -34,13 +36,14 @@ export default function TestFetcher() {
 
     return (
         <div>
-            <h1>Key Word:</h1>
-            <div className="d-flex align-items-center">
+            <div className="d-flex justify-content-center mt-4 mainText" style={{fontSize: "xxx-large"}}>Key Word:</div>
+
+            <div className="d-flex justify-content-center align-items-center">
 
                 <Box
                     component="form"
                     sx={{
-                        '& > :not(style)': { m: 1, width: '35ch' },
+                        '& > :not(style)': { m: 1, width: '50ch' },
                     }}
                     noValidate
                     autoComplete="off"
@@ -49,12 +52,13 @@ export default function TestFetcher() {
                 </Box>
 
 
-                <Stack direction="row" sx={{height: "56px"}}>
+                <Stack direction="row" sx={{ height: "56px" }}>
                     <Button onClick={fetchSomething} variant="contained">Search</Button>
                 </Stack>
             </div>
 
-            {isClicked && <h3>Results:</h3>}
+
+            {/* {isClicked && <h3>Results:</h3>} */}
             {versesArray.map((verse) => {
                 // let text = verse.text
                 // let finalText = highlight(text);
