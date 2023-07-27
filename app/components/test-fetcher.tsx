@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField';
 export default function TestFetcher() {
     const [searchText, setTextSearch] = useState("love");
     const [versesArray, setVersesArray] = useState<Verse[]>([]);
+    const [isClicked, setIsClicked] = useState(false);
 
 
     const updateTextSearch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -25,6 +26,7 @@ export default function TestFetcher() {
             const verses = result.verses as Verse[];
             console.log(verses)
             setVersesArray(verses);
+            setIsClicked(true);
         } catch (error) {
             console.error(error);
         }
@@ -52,7 +54,7 @@ export default function TestFetcher() {
                 </Stack>
             </div>
 
-            <h3>Results:</h3>
+            {isClicked && <h3>Results:</h3>}
             {versesArray.map((verse) => {
                 // let text = verse.text
                 // let finalText = highlight(text);
