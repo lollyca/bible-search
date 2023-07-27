@@ -6,3 +6,7 @@
 .bgBrand {
     background-color: #c3b9b970
 }
+
+body {
+    overflow-x: hidden;
+}

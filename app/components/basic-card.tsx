@@ -30,7 +30,7 @@ export default function BasicCard({ text, match, reference }: BasicCardProps) {
   }
 
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ minWidth: 275, borderRadius: 0 }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {reference}
