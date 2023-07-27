@@ -14,9 +14,7 @@ import "../styles.css"
 export default function TestFetcher() {
     const [searchText, setTextSearch] = useState("");
     const [versesArray, setVersesArray] = useState<Verse[]>([]);
-    const [isClicked, setIsClicked] = useState(false);
-    
-
+    // const [isClicked, setIsClicked] = useState(false);
 
     const updateTextSearch = (e: ChangeEvent<HTMLInputElement>) => {
         setTextSearch(e.target.value);
@@ -30,7 +28,7 @@ export default function TestFetcher() {
             const verses = result.verses as Verse[];
             console.log(verses)
             setVersesArray(verses);
-            setIsClicked(true);
+            // setIsClicked(true);
         } catch (error) {
             console.error(error);
         }
@@ -38,18 +36,18 @@ export default function TestFetcher() {
 
     return (
         <div className="bgBrand">
-            <div className="d-flex justify-content-center mt-4 mainText" style={{fontSize: "xxx-large"}}>Key Word:</div>
+            <div className="d-flex justify-content-center mt-4 mainText" style={{ fontSize: "xxx-large" }}>Key Word:</div>
 
             <div className="d-flex justify-content-center align-items-center mb-3">
 
                 <Box
                     component="form"
                     sx={{
-                        '& > :not(style)': { m: 1, width: '50ch'},
+                        '& > :not(style)': { m: 1, width: '50ch' },
                     }}
                     noValidate
                     autoComplete="off"
-                    
+
                 >
                     <TextField id="outlined-basic" value={searchText} onChange={updateTextSearch} label="Search" variant="filled" />
                 </Box>
@@ -57,7 +55,7 @@ export default function TestFetcher() {
 
                 <Stack direction="row" sx={{ height: "56px" }}>
                     <Button onClick={fetchSomething} variant="contained" color="primary">
-                    <SearchOutlinedIcon />
+                        <SearchOutlinedIcon />
                     </Button>
                 </Stack>
             </div>

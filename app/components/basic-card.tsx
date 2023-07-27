@@ -1,8 +1,6 @@
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 const bull = (
@@ -28,7 +26,7 @@ export default function BasicCard({ text, match, reference }: BasicCardProps) {
     const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
     console.log(parts);
 
-    return <span>{parts.map(part => part.toLowerCase() === highlight.toLowerCase() ? <span style={{ backgroundColor: 'yellow', padding: '1px' }}><b>{part}</b></span> : part)}</span>;
+    return <span>{parts.map(part => part.toLowerCase() === highlight.toLowerCase() ? <span style={{ backgroundColor: '#c3b9b970', padding: '1px' }}><b>{part}</b></span> : part)}</span>;
   }
 
   return (
