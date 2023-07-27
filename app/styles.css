@@ -1,4 +1,8 @@
 .mainText {
  color: rgba(0, 0, 0, 0.782);
- font-family: "Roboto","Helvetica","Arial",sans-serif;
+ font-family: "Roboto"
+}
+
+.bgBrand {
+    background-color: #c3b9b970
 }
