@@ -2,7 +2,6 @@
 
 import TestFetcher from "./components/test-fetcher"
 
-
 export default function Home() {
   return (
     <div className="row justify-content-center p-0">

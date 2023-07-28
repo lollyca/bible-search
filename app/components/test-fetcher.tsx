@@ -10,16 +10,26 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 import "../styles.css"
 
+import { Autocomplete } from '@mui/material';
+import { BibleVersion, bibleVersionsList } from '../model/bible-versions';
+
 
 export default function TestFetcher() {
     const [searchText, setTextSearch] = useState("");
     const [firstSearch, setFirstSearch] = useState(true);
     const [versesArray, setVersesArray] = useState<Verse[]>([]);
     // const [isClicked, setIsClicked] = useState(false);
+    const [bibleVersion, setBibleVersion] = useState("de4e12af7f28f599-02");
 
     const updateTextSearch = (e: ChangeEvent<HTMLInputElement>) => {
         setTextSearch(e.target.value);
     };
+
+    function updateBibleVersion(_: any, value: BibleVersion | null) {
+        //get bible id from Combo-Box Component
+        //send the ID to the Search
+        console.log('bleeh', value);
+    }
 
     async function fetchSomething() {
         const url = `api/search?query=${searchText}&`
@@ -60,7 +70,7 @@ export default function TestFetcher() {
                         autoComplete="off"
 
                     >
-                        <TextField id="outlined-basic" onKeyDown={onTextKeyDown} value={searchText} onChange={updateTextSearch} label="Search" variant="filled" />
+                        <TextField id="outlined-basic" bibleversion={bibleVersion} onKeyDown={onTextKeyDown} value={searchText} onChange={updateTextSearch} label="Search" variant="filled" />
                     </Box>
 
 
@@ -88,6 +98,16 @@ export default function TestFetcher() {
                     <h5>Nothing here :(</h5>
                 </div>
             }
+            <div>
+                <Autocomplete
+                    disablePortal
+                    id="bible-choice-list"
+                    options={bibleVersionsList}
+                    sx={{ width: 400 }}
+                    onChange={updateBibleVersion}
+                    renderInput={(params) => <TextField {...params} label="Bible Version" />}
+                />
+            </div>
         </div>
     )
 }
