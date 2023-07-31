@@ -72,7 +72,7 @@ export default function TestFetcher() {
                         autoComplete="off"
 
                     >
-                        <TextField id="outlined-basic" bibleversion={bibleVersion} onKeyDown={onTextKeyDown} value={searchText} onChange={updateTextSearch} label="Search" variant="filled" />
+                        <TextField id="outlined-basic" onKeyDown={onTextKeyDown} value={searchText} onChange={updateTextSearch} label="Search" variant="filled" />
                     </Box>
 
 
