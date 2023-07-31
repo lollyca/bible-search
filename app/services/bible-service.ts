@@ -6,6 +6,10 @@ import { Verse } from '../model/verse';
  * @param bibleId example: de4e12af7f28f599-02
  */
 export async function queryVerses(searchText: string, bibleId: string) {
+    if (!searchText || !bibleId) {
+        return [];
+    }
+
     const offset = 0;
     const limit = 100;
 
