@@ -20,8 +20,22 @@ export default async function Search({ searchParams }) {
 
             <form action="/search" method="GET">
                 <div className="bgBrand">
-                    {/* <DebuggingForm /> */}
-                    <MUIForm searchText={text} />
+                    <div className="d-flex justify-content-center pt-4 mainText" style={{ fontSize: "xxx-large" }}>Key Word:</div>
+                    <div className="d-flex justify-content-center align-items-center pb-3">
+                        <Box component="div"
+                            sx={{
+                                '& > :not(style)': { m: 1, width: '50ch' },
+                            }}
+                        >
+                            <TextField name="text" defaultValue={text} label="Search" variant="filled" />
+                        </Box>
+
+                        <Stack direction="row" sx={{ height: "56px" }}>
+                            <Button type="submit" variant="contained" color="primary">
+                                <SearchOutlinedIcon />
+                            </Button>
+                        </Stack>
+                    </div>
                 </div>
 
                 <div>
@@ -42,42 +56,4 @@ export default async function Search({ searchParams }) {
             }
         </div>
     )
-}
-
-function MUIForm({ searchText }) {
-    return (
-        <>
-            <div className="d-flex justify-content-center pt-4 mainText" style={{ fontSize: "xxx-large" }}>Key Word:</div>
-            <div className="d-flex justify-content-center align-items-center pb-3">
-                <Box component="div"
-                    sx={{
-                        '& > :not(style)': { m: 1, width: '50ch' },
-                    }}
-                >
-                    <TextField name="text" defaultValue={searchText} label="Search" variant="filled" />
-                </Box>
-
-                <Stack direction="row" sx={{ height: "56px" }}>
-                    <Button type="submit" variant="contained" color="primary">
-                        <SearchOutlinedIcon />
-                    </Button>
-                </Stack>
-            </div>
-        </>
-    );
-}
-
-function DebuggingForm() {
-    return (
-        <form className="bgBrand" action="/search" method="GET">
-            <div className="d-flex justify-content-center pt-4 mainText" style={{ fontSize: "xxx-large" }}>Key Word:</div>
-            <div className="d-flex justify-content-center align-items-center pb-3">
-                <input name="text" type="text" />
-                <button type="submit">GO</button>
-                <select name="bibleVersion">
-                    <option value="de4e12af7f28f599-02">the old english one</option>
-                </select>
-            </div>
-        </form>
-    );
 }
