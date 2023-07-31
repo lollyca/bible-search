@@ -8,22 +8,26 @@ const DEFAULT_BIBLE = bibleVersionsList.find(x => x.label.toLowerCase().includes
 
 export function AutocompleteComponent() {
 
-    const [bibleVersionId, setBibleVersionId] = useState<string | undefined>(DEFAULT_BIBLE?.id);
     const [bibleVersion, setBibleVersion] = useState<BibleVersion | undefined>(DEFAULT_BIBLE);
 
     useEffect(() => {
         let address = new URL(window.location.href);
         let id = address.searchParams.get('bibleVersion') || '';
-        const bible = bibleVersionsList.find(x => x.id === id);
+        const bibleObject = bibleVersionsList.find(x => x.id === id);
 
-        setBibleVersionId(bible?.id);
-        setBibleVersion(bible);
+        if (bibleObject) {
+            setBibleVersion(bibleObject);
+        }
     }, []);
 
     function updateBibleVersion(_: any, value: BibleVersion | null) {
         if (value) {
-            setBibleVersionId(value.id);
-            setBibleVersion(value);
+            let address = new URL(window.location.href);
+            let searchText = address.searchParams.get('text') || '';
+
+            const newUrl = `/search?text=${searchText}&bibleVersion=${value.id}`;
+
+            window.location.href = newUrl;
         }
     }
 
@@ -36,9 +40,10 @@ export function AutocompleteComponent() {
                 value={bibleVersion}
                 sx={{ width: 400 }}
                 onChange={updateBibleVersion}
-                renderInput={(params) => <TextField {...params} label="Bible Version" />}
+                renderInput={(params) => (<TextField {...params} label="Bible Version" />)}
+                renderOption={(props, option) => (<li {...props} key={option.id}>{option.label}</li>)}
             />
-            <input className="d-none" name="bibleVersion" defaultValue={bibleVersionId} />
+            <input className="d-none" name="bibleVersion" defaultValue={bibleVersion?.id} />
         </div>
     );
 }

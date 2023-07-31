@@ -5,11 +5,16 @@ import { queryVerses } from '../services/bible-service';
 import '../styles.css'
 import { AutocompleteComponent } from '../components/autocomplete';
 
-// search?text=something&bibleVersion=someid
-export default async function Search({ searchParams }) {
+interface SearchPageProps {
+    searchParams: {
+        text: string;
+        bibleVersion: string;
+    }
+}
+
+export default async function Search({ searchParams }: SearchPageProps) {
 
     const { text, bibleVersion } = searchParams;
-
     const versesArray = await queryVerses(text, bibleVersion);
 
     return (
