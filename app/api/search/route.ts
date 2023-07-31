@@ -1,29 +1,14 @@
-import { Verse } from '@/app/model/verse';
+import { queryVerses } from '@/app/services/bible-service';
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
 
     const u = new URL(request.url);
-    const searchText = u.searchParams.get('query');
-    // example: de4e12af7f28f599-02
-    const bibleId = u.searchParams.get('bibleId');
 
-    const offset = 0;
-    const limit = 100;
+    const searchText = u.searchParams.get('query') || '';
+    const bibleId = u.searchParams.get('bibleId') || '';
 
-    const url = `https://api.scripture.api.bible/v1/bibles/${bibleId}/search?query=${searchText}&offset=${offset}&limit=${limit}`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'api-key': process.env.BIBLE_API_KEY || ''
-        }
-    };
-
-    const response = await fetch(url, options);
-    const result = await response.json();
-
-    const verses = result.data?.verses as Verse[] || [];
-    console.log(`found ${verses?.length} verses`);
+    const verses = await queryVerses(searchText, bibleId);
 
     return NextResponse.json({ verses });
 }
