@@ -19,6 +19,17 @@ export default async function Search({ searchParams }: SearchPageProps) {
     const { text, bibleVersion } = searchParams;
     const versesArray = await queryVerses(text, bibleVersion);
 
+    const bookIdSet = new Set();
+    function gettingLabels() {
+        versesArray.length > 0 && versesArray.map((verse) => {
+            if (!bookIdSet.has(verse.bookId)) {
+                bookIdSet.add(verse.bookId)
+            }
+        })
+    }
+    gettingLabels();
+    const bookIdArray = [...bookIdSet];
+
     return (
         <div className="row justify-content-center p-0">
             <div className="row m-0 p-0 h-25">
@@ -47,15 +58,22 @@ export default async function Search({ searchParams }: SearchPageProps) {
 
                 <div>
                     <AutocompleteComponent />
-                    <CheckboxLabels />
+                    {/* <CheckboxLabels bibleBook={"JOHN"}/> */}
                 </div>
             </form>
+
+            <div className="d-flex">
+                {bookIdArray.map((bookId) => {
+                    return <CheckboxLabels bibleBook={bookId}/>
+                })}
+            </div>
 
             <div>
                 {versesArray.length > 0 && versesArray.map((verse) => {
                     return <BasicCard key={verse.id} match={text} text={verse.text} reference={verse.reference} />
                 })}
             </div>
+
 
             {text && versesArray.length === 0 &&
                 <div className="h-100 w-100 d-flex justify-content-center align-items-center">
