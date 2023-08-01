@@ -10,6 +10,8 @@ export async function queryVerses(searchText: string, bibleId: string) {
         return [];
     }
 
+
+
     const offset = 0;
     const limit = 100;
 
@@ -23,8 +25,7 @@ export async function queryVerses(searchText: string, bibleId: string) {
 
     const response = await fetch(url, options);
     const result = await response.json();
-
     const verses = result.data?.verses as Verse[] || [];
-
+    console.log("im hereeeee: ", result.data)
     return verses;
 }

@@ -1,9 +1,11 @@
 import { Box, Button, Stack, TextField } from '@mui/material';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import BasicCard from '../components/basic-card';
+import { AutocompleteComponent } from '../components/autocomplete';
 import { queryVerses } from '../services/bible-service';
 import '../styles.css'
-import { AutocompleteComponent } from '../components/autocomplete';
+import CheckboxLabels from '../components/check-box';
+
 
 interface SearchPageProps {
     searchParams: {
@@ -45,6 +47,7 @@ export default async function Search({ searchParams }: SearchPageProps) {
 
                 <div>
                     <AutocompleteComponent />
+                    <CheckboxLabels />
                 </div>
             </form>
 

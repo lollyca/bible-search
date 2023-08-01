@@ -24,8 +24,6 @@ export default function BasicCard({ text, match, reference }: BasicCardProps) {
 
   function getHighlightedText(text: string, highlight: string) {
     const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
-    console.log(parts);
-
     return <span>{parts.map((part,i) => part.toLowerCase() === highlight.toLowerCase() ? <span key={i} style={{ backgroundColor: '#c3b9b970', padding: '1px' }}><b>{part}</b></span> : part)}</span>;
   }
 
