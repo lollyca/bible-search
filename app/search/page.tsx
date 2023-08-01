@@ -1,4 +1,4 @@
-import { Box, Button, Stack, TextField } from '@mui/material';
+import { Box, Button, FormControl, InputLabel, Select, Stack, TextField } from '@mui/material';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import BasicCard from '../components/basic-card';
 import { AutocompleteComponent } from '../components/autocomplete';
@@ -62,15 +62,24 @@ export default async function Search({ searchParams }: SearchPageProps) {
                 </div>
             </form>
 
-            <div className="d-flex">
-                {bookIdArray.map((bookId) => {
-                    return <CheckboxLabels bibleBook={bookId}/>
-                })}
-            </div>
 
+            {/* ------------------------------------- Just wrapped ------------------------------------- */}
             <div>
-                <BibleBookFilter bringArray={bookIdArray}/>
+                <FormControl sx={{ m: 1, width: 300 }}>
+                    <InputLabel id="demo-multiple-checkbox-label">Book Filter</InputLabel>
+                    <Select>
+                        {bookIdArray.map((bookId) => {
+                            return <CheckboxLabels bibleBook={bookId} />
+                        })}
+                    </Select>
+                </FormControl>
             </div>
+            {/* ------------------------------------- Imported Component ------------------------------------- */}
+            <div>
+                <BibleBookFilter bringArray={bookIdArray} />
+            </div>
+            {/* --------------------------------------------------------------------------------------------- */}
+
 
             <div>
                 {versesArray.length > 0 && versesArray.map((verse) => {
