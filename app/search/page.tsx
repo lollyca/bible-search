@@ -1,11 +1,11 @@
-import { Box, Button, FormControl, InputLabel, Select, Stack, TextField } from '@mui/material';
+import { Box, Button, Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select, Stack, TextField } from '@mui/material';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import BasicCard from '../components/basic-card';
 import { AutocompleteComponent } from '../components/autocomplete';
 import { queryVerses } from '../services/bible-service';
 import '../styles.css'
-import CheckboxLabels from '../components/check-box';
-import BibleBookFilter from '../components/bible-book-filter';
+import MultipleSelectCheckmarks from '../components/multiple-select-checkmarks';
+
 
 interface SearchPageProps {
     searchParams: {
@@ -56,29 +56,14 @@ export default async function Search({ searchParams }: SearchPageProps) {
                     </div>
                 </div>
 
-                <div>
+                <div className="p-3">
                     <AutocompleteComponent />
-                    {/* <CheckboxLabels bibleBook={"JOHN"}/> */}
+                </div>
+
+                <div className="p-3">
+                    <MultipleSelectCheckmarks passedArray={bookIdArray}/>
                 </div>
             </form>
-
-
-            {/* ------------------------------------- Just wrapped ------------------------------------- */}
-            <div>
-                <FormControl sx={{ m: 1, width: 300 }}>
-                    <InputLabel id="demo-multiple-checkbox-label">Book Filter</InputLabel>
-                    <Select>
-                        {bookIdArray.map((bookId) => {
-                            return <CheckboxLabels bibleBook={bookId} />
-                        })}
-                    </Select>
-                </FormControl>
-            </div>
-            {/* ------------------------------------- Imported Component ------------------------------------- */}
-            <div>
-                <BibleBookFilter bringArray={bookIdArray} />
-            </div>
-            {/* --------------------------------------------------------------------------------------------- */}
 
 
             <div>
@@ -86,9 +71,6 @@ export default async function Search({ searchParams }: SearchPageProps) {
                     return <BasicCard key={verse.id} match={text} text={verse.text} reference={verse.reference} />
                 })}
             </div>
-
-
-
 
             {text && versesArray.length === 0 &&
                 <div className="h-100 w-100 d-flex justify-content-center align-items-center">
