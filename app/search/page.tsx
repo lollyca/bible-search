@@ -5,7 +5,7 @@ import { AutocompleteComponent } from '../components/autocomplete';
 import { queryVerses } from '../services/bible-service';
 import '../styles.css'
 import CheckboxLabels from '../components/check-box';
-
+import BibleBookFilter from '../components/bible-book-filter';
 
 interface SearchPageProps {
     searchParams: {
@@ -69,10 +69,16 @@ export default async function Search({ searchParams }: SearchPageProps) {
             </div>
 
             <div>
+                <BibleBookFilter bringArray={bookIdArray}/>
+            </div>
+
+            <div>
                 {versesArray.length > 0 && versesArray.map((verse) => {
                     return <BasicCard key={verse.id} match={text} text={verse.text} reference={verse.reference} />
                 })}
             </div>
+
+
 
 
             {text && versesArray.length === 0 &&
