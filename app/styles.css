@@ -1,6 +1,11 @@
-.mainText {
-    color: rgba(0, 0, 0, 0.782);
-    font-family: "Roboto"
+.main-text {
+    color: #827979;
+    font-family: "sans-serif";
+}
+
+.footer-text {
+    color: #4e4a4ad5;
+    font-family: "sans-serif";
 }
 
 .bg-brand {
@@ -11,3 +16,4 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
 }
+
