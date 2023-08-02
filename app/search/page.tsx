@@ -48,7 +48,7 @@ export default async function Search({ searchParams }: SearchPageProps) {
     }
 
     return (
-        <div className="justify-content-center p-0">
+        <div className="justify-content-center p-0" style={{height: "400px"}}>
                 <form action="/search" method="GET">
                     <div className="bgBrand">
                         <div className="d-flex justify-content-center align-items-center p-3">
@@ -77,7 +77,7 @@ export default async function Search({ searchParams }: SearchPageProps) {
                         </div>
                     </div>
                 </form>
-            <div>
+            <div className="">
                 {versesArray.length > 0 && versesArray.map((verse) => {
                     return <BasicCard key={verse.id} match={text} text={verse.text} reference={verse.reference} />
                 })}
