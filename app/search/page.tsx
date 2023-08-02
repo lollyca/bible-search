@@ -5,19 +5,32 @@ import { AutocompleteComponent } from '../components/autocomplete';
 import { queryVerses } from '../services/bible-service';
 import '../styles.css'
 import MultipleSelectCheckmarks from '../components/multiple-select-checkmarks';
+import { Verse } from '../model/verse';
 
 
 interface SearchPageProps {
     searchParams: {
         text: string;
         bibleVersion: string;
+
+        /** List of books to filter in, separated by comma. If empty, no filter */
+        booksFilter: string;
     }
+}
+
+function filterVerses(versesArray: Verse[], booksFilter: string) {
+    // we expect booksFilter to be a string like '1JN,JHN'
+    const booksArray = booksFilter.split(',');
+
+    // example: ['1JN', 'JHN'].includes('1JN') - true
+    // example: ['1JN', 'JHN'].includes('poo') - false
+    return versesArray.filter(verseObject => booksArray.includes(verseObject.bookId));
 }
 
 export default async function Search({ searchParams }: SearchPageProps) {
 
-    const { text, bibleVersion } = searchParams;
-    const versesArray = await queryVerses(text, bibleVersion);
+    const { text, bibleVersion, booksFilter } = searchParams;
+    let versesArray = await queryVerses(text, bibleVersion);
 
     const bookIdSet = new Set();
     function gettingLabels() {
@@ -29,6 +42,10 @@ export default async function Search({ searchParams }: SearchPageProps) {
     }
     gettingLabels();
     const bookIdArray = [...bookIdSet];
+
+    if (booksFilter) {
+        versesArray = filterVerses(versesArray, booksFilter);
+    }
 
     return (
         <div className="row justify-content-center p-0">
@@ -61,7 +78,7 @@ export default async function Search({ searchParams }: SearchPageProps) {
                 </div>
 
                 <div className="p-3">
-                    <MultipleSelectCheckmarks passedArray={bookIdArray}/>
+                    <MultipleSelectCheckmarks passedArray={bookIdArray} />
                 </div>
             </form>
 

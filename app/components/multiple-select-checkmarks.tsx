@@ -1,4 +1,4 @@
-// 'use client'
+'use client'
 import * as React from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -20,25 +20,25 @@ const MenuProps = {
 };
 
 export default function MultipleSelectCheckmarks({passedArray} : any) {
-    // const [personName, setPersonName] = React.useState<string[]>([]);
+    const [personName, setPersonName] = React.useState<string[]>([]);
 
-    // React.useEffect(() => {
-    //     console.log("im changiniiiinnnf!!!!")
-    // }, [personName])
+    React.useEffect(() => {
+        console.log("im changiniiiinnnf!!!!")
+    }, [personName])
 
     const books = passedArray;
     console.log(books)
+    console.log("person name is: ",personName)
 
-
-  // const handleChange = (event: SelectChangeEvent<typeof personName>) => {
-  //   const {
-  //     target: { value },
-  //   } = event;
-  //   setPersonName(
-  //     // On autofill we get a stringified value.
-  //     typeof value === 'string' ? value.split(',') : value,
-  //   );
-  // };
+  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === 'string' ? value.split(',') : value,
+    );
+  };
 
   return (
     <div>
@@ -47,16 +47,16 @@ export default function MultipleSelectCheckmarks({passedArray} : any) {
         <Select
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
-          // multiple
-          value={passedArray}
-          // onChange={handleChange}
-          input={<OutlinedInput label="Tag" />}
-          // renderValue={(selected) => selected.join(', ')}
+          multiple
+          value={personName}
+          onChange={handleChange}
+          input={<OutlinedInput name="booksFilter" label="Tag" />}
+          renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
           {books.map((name:string) => (
             <MenuItem key={name} value={name}>
-              <Checkbox checked={passedArray.indexOf(name) > -1} />
+              <Checkbox checked={personName.indexOf(name) > -1} />
               <ListItemText primary={name} />
             </MenuItem>
           ))}
