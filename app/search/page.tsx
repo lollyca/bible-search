@@ -55,8 +55,7 @@ export default async function Search({ searchParams }: SearchPageProps) {
 
             <form action="/search" method="GET">
                 <div className="bgBrand">
-                    <div className="d-flex justify-content-center pt-4 mainText" style={{ fontSize: "xxx-large" }}>Key Word:</div>
-                    <div className="d-flex justify-content-center align-items-center pb-3">
+                    <div className="d-flex justify-content-center align-items-center p-3">
                         <Box component="div"
                             sx={{
                                 '& > :not(style)': { m: 1, width: '50ch' },
@@ -72,18 +71,18 @@ export default async function Search({ searchParams }: SearchPageProps) {
                         </Stack>
                     </div>
                 </div>
+                <div className="d-flex justify-content-center align-items-center">
+                    <div className="p-3">
+                        <AutocompleteComponent />
+                    </div>
 
-                <div className="p-3">
-                    <AutocompleteComponent />
-                </div>
-
-                <div className="p-3">
-                    <MultipleSelectCheckmarks booksArray={bookIdArray} initialSelectedBooks={booksArray} />
+                    <div className="p-3">
+                        <MultipleSelectCheckmarks booksArray={bookIdArray} initialSelectedBooks={booksArray} />
+                    </div>
                 </div>
             </form>
 
-            <div className="ps-4">{versesArray.length.toString()} results</div>
-            <hr />
+            {/* <div className="ps-4">Results: {versesArray.length.toString()}</div> */}
 
             <div>
                 {versesArray.length > 0 && versesArray.map((verse) => {
