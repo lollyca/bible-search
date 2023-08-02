@@ -18,21 +18,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="h-100">
       <ThemeProvider theme={theme}>
         <body className="h-100">
-
-
-          <div>
-            <div className="row h-25">
-              <img style={{ objectFit: "cover", height: "300px" }} src="/banner.jpeg" alt="" />
-            </div>
-            <div className="row">
-              {children}
-            </div>
-          </div>
-
-          <div className="d-flex justify-content-center align-items-center mt-auto">
+          <img style={{ objectFit: "cover", height: "25%", width: "100%" }} src="/banner.jpeg" alt="" />
+          {children}
+          <div className="d-flex justify-content-center align-items-center">
             <Footer />
           </div>
-
         </body>
       </ThemeProvider>
     </html>
