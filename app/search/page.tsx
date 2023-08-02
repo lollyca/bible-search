@@ -78,6 +78,10 @@ export default async function Search({ searchParams }: SearchPageProps) {
                     </div>
                 </form>
             </div>
+
+            <div className="ps-3 footer-text">Results: {versesArray.length.toString()}</div>
+
+
             <div style={{ overflowY: "scroll", flex: '2' }} >
                 {versesArray.length > 0 && versesArray.map((verse) => {
                     return <BasicCard key={verse.id} match={text} text={verse.text} reference={verse.reference} />
@@ -92,3 +96,4 @@ export default async function Search({ searchParams }: SearchPageProps) {
         </div>
     );
 }
+
