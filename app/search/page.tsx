@@ -18,10 +18,7 @@ interface SearchPageProps {
     }
 }
 
-function filterVerses(versesArray: Verse[], booksFilter: string) {
-    // we expect booksFilter to be a string like '1JN,JHN'
-    const booksArray = booksFilter.split(',');
-
+function filterVerses(versesArray: Verse[], booksArray: string[]) {
     // example: ['1JN', 'JHN'].includes('1JN') - true
     // example: ['1JN', 'JHN'].includes('poo') - false
     return versesArray.filter(verseObject => booksArray.includes(verseObject.bookId));
@@ -32,7 +29,7 @@ export default async function Search({ searchParams }: SearchPageProps) {
     const { text, bibleVersion, booksFilter } = searchParams;
     let versesArray = await queryVerses(text, bibleVersion);
 
-    const bookIdSet = new Set();
+    const bookIdSet = new Set<string>();
     function gettingLabels() {
         versesArray.length > 0 && versesArray.map((verse) => {
             if (!bookIdSet.has(verse.bookId)) {
@@ -43,8 +40,11 @@ export default async function Search({ searchParams }: SearchPageProps) {
     gettingLabels();
     const bookIdArray = [...bookIdSet];
 
-    if (booksFilter) {
-        versesArray = filterVerses(versesArray, booksFilter);
+    // we expect booksFilter to be a string like '1JN,JHN'
+    const booksArray = booksFilter?.split(',').filter(x => !!x) || [];
+
+    if (booksArray.length > 0) {
+        versesArray = filterVerses(versesArray, booksArray);
     }
 
     return (
@@ -78,10 +78,12 @@ export default async function Search({ searchParams }: SearchPageProps) {
                 </div>
 
                 <div className="p-3">
-                    <MultipleSelectCheckmarks passedArray={bookIdArray} />
+                    <MultipleSelectCheckmarks booksArray={bookIdArray} initialSelectedBooks={booksArray} />
                 </div>
             </form>
 
+            <div className="ps-4">{versesArray.length.toString()} results</div>
+            <hr />
 
             <div>
                 {versesArray.length > 0 && versesArray.map((verse) => {
