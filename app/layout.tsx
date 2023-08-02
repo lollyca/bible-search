@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import theme from './theme';
 import { ThemeProvider } from '@mui/material';
+import Footer from './components/footer';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,13 +15,24 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-100">
       <ThemeProvider theme={theme}>
-        <body>
-          <div className="row m-0 p-0 h-25">
-            <img style={{ objectFit: "cover", height: "300px" }} src="/banner.jpeg" alt="" />
+        <body className="h-100">
+
+
+          <div>
+            <div className="row h-25">
+              <img style={{ objectFit: "cover", height: "300px" }} src="/banner.jpeg" alt="" />
+            </div>
+            <div className="row">
+              {children}
+            </div>
           </div>
-          {children}
+
+          <div className="d-flex justify-content-center align-items-center mt-auto">
+            <Footer />
+          </div>
+
         </body>
       </ThemeProvider>
     </html>
