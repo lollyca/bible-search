@@ -20,9 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <body className="h-100">
           <img style={{ objectFit: "cover", height: "25%", width: "100%" }} src="/banner.jpeg" alt="" />
           {children}
-          <div className="d-flex justify-content-center align-items-center">
             <Footer />
-          </div>
         </body>
       </ThemeProvider>
     </html>

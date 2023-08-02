@@ -1,7 +1,8 @@
+import "../styles.css"
 export default function Footer() {
     return (
-        <div>
-            <h3>Im the footer</h3>
+        <div className="d-flex justify-content-center align-items-center bgBrand" style={{fontFamily: "sans-serif"}}>
+            Bible Search 2023
         </div>
     )
 }
