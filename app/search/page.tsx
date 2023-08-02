@@ -38,7 +38,7 @@ export default async function Search({ searchParams }: SearchPageProps) {
         })
     }
     gettingLabels();
-    const bookIdArray = [...bookIdSet];
+    const bookIdArray = Array.from(bookIdSet);
 
     // we expect booksFilter to be a string like '1JN,JHN'
     const booksArray = booksFilter?.split(',').filter(x => !!x) || [];
