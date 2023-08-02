@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import HomeIcon from '@mui/icons-material/Home';
 
 import "../styles.css"
 
@@ -81,10 +82,14 @@ export default function TestFetcher() {
                             <SearchOutlinedIcon />
                         </Button>
                     </Stack>
+                    <Stack direction="row">
+                        <a href="/search"><Button sx={{ height: "56px" }} variant="contained" color="primary">
+                            <HomeIcon />
+                        </Button></a>
+                    </Stack>
                 </div>
 
             </div>
-
             <div>
                 <Autocomplete
                     disablePortal
