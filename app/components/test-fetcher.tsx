@@ -57,7 +57,7 @@ export default function TestFetcher() {
 
     return (
         <div>
-            <div className="bgBrand">
+            <div className="bg-brand">
                 <div className="d-flex justify-content-center pt-4 mainText" style={{ fontSize: "xxx-large" }}>Key Word:</div>
 
                 <div className="d-flex justify-content-center align-items-center pb-3">

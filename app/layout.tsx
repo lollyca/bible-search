@@ -17,12 +17,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="h-100">
       <ThemeProvider theme={theme}>
-        <body className="h-100">
-          <img style={{ objectFit: "cover", height: "25%", width: "100%" }} src="/banner.jpeg" alt="" />
-          {children}
-            <Footer />
+        <body className="h-100 d-flex flex-column overflow-hidden">
+          <div>
+            <img className="w-100" style={{ objectFit: 'cover', height: '25vh' }} src="/banner.jpeg" alt="" />
+          </div>
+          <div style={{ flex: '2' }} className="overflow-hidden">
+            {children}
+          </div>
+          <Footer />
         </body>
       </ThemeProvider>
     </html>
-  )
+  );
 }

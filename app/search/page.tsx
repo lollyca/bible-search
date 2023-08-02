@@ -3,10 +3,9 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import BasicCard from '../components/basic-card';
 import { AutocompleteComponent } from '../components/autocomplete';
 import { queryVerses } from '../services/bible-service';
-import '../styles.css'
 import MultipleSelectCheckmarks from '../components/multiple-select-checkmarks';
 import { Verse } from '../model/verse';
-
+import '../styles.css'
 
 interface SearchPageProps {
     searchParams: {
@@ -48,9 +47,10 @@ export default async function Search({ searchParams }: SearchPageProps) {
     }
 
     return (
-        <div className="justify-content-center p-0" style={{height: "400px"}}>
+        <div className="h-100 d-flex flex-column p-0">
+            <div>
                 <form action="/search" method="GET">
-                    <div className="bgBrand">
+                    <div className="bg-brand">
                         <div className="d-flex justify-content-center align-items-center p-3">
                             <Box component="div"
                                 sx={{
@@ -77,7 +77,9 @@ export default async function Search({ searchParams }: SearchPageProps) {
                         </div>
                     </div>
                 </form>
-            <div className="">
+                {/* <div className="ps-4">Results: {versesArray.length.toString()}</div> */}
+            </div>
+            <div style={{ overflowY: "scroll", flex: '2' }} >
                 {versesArray.length > 0 && versesArray.map((verse) => {
                     return <BasicCard key={verse.id} match={text} text={verse.text} reference={verse.reference} />
                 })}
@@ -89,7 +91,5 @@ export default async function Search({ searchParams }: SearchPageProps) {
                 </div>
             }
         </div>
-    )
+    );
 }
-
-{/* <div className="ps-4">Results: {versesArray.length.toString()}</div> */}

@@ -3,14 +3,11 @@
     font-family: "Roboto"
 }
 
-.bgBrand {
-    background-color: #c3b9b970
+.bg-brand {
+    background-color: #c3b9b970;
 }
 
 body {
     overflow-x: hidden;
-}
-
-div.scrollable {
-    overflow: scroll;
+    overflow-y: hidden;
 }
