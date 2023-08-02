@@ -48,7 +48,7 @@ export default async function Search({ searchParams }: SearchPageProps) {
 
     return (
         <div className="h-100 d-flex flex-column p-0">
-            <div>
+            <div style={{border: "1px solid #c3b9b970"}}>
                 <form action="/search" method="GET">
                     <div className="bg-brand">
                         <div className="d-flex justify-content-center align-items-center p-3">
@@ -77,7 +77,6 @@ export default async function Search({ searchParams }: SearchPageProps) {
                         </div>
                     </div>
                 </form>
-                {/* <div className="ps-4">Results: {versesArray.length.toString()}</div> */}
             </div>
             <div style={{ overflowY: "scroll", flex: '2' }} >
                 {versesArray.length > 0 && versesArray.map((verse) => {
