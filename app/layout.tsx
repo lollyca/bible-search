@@ -17,6 +17,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <ThemeProvider theme={theme}>
         <body>
+          <div className="row m-0 p-0 h-25">
+            <img style={{ objectFit: "cover", height: "300px" }} src="/banner.jpeg" alt="" />
+          </div>
           {children}
         </body>
       </ThemeProvider>
