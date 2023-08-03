@@ -62,12 +62,12 @@ export default async function Search({ searchParams }: SearchPageProps) {
 
                         </div>
                     </div>
-                    <div className="d-flex justify-content-center align-items-center">
-                        <div className="p-3">
+                    <div className="row justify-content-center mx-0">
+                        <div className="col-xs-12 col-md-6 col-lg-5 col-xl-4 px-3 pt-3">
                             <AutocompleteComponent />
                         </div>
 
-                        <div className="p-3">
+                        <div className="col-xs-12 col-md-6 col-lg-5 col-xl-4 px-3 py-3">
                             <MultipleSelectCheckmarks booksArray={bookIdArray} initialSelectedBooks={booksArray} />
                         </div>
                     </div>

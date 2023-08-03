@@ -46,7 +46,7 @@ export default function MultipleSelectCheckmarks({ booksArray, initialSelectedBo
     }
 
     return (
-        <FormControl sx={{ m: 1, width: 300 }}>
+        <FormControl sx={{ width: '100%' }}>
             <InputLabel>Filter </InputLabel>
             <Select
                 multiple

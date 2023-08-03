@@ -38,7 +38,6 @@ export function AutocompleteComponent() {
                 id="bible-choice-list"
                 options={bibleVersionsList}
                 value={bibleVersion}
-                sx={{ width: 400 }}
                 onChange={updateBibleVersion}
                 renderInput={(params) => (<TextField {...params} label="Bible Version" />)}
                 renderOption={(props, option) => (<li {...props} key={option.id}>{option.label}</li>)}
