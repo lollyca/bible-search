@@ -51,7 +51,7 @@ export default async function Search({ searchParams }: SearchPageProps) {
             <div style={{ border: "1px solid #c3b9b970" }}>
                 <form action="/search" method="GET">
                     <div className="bg-brand row justify-content-center">
-                        <div className="col-xs-12 col-sm-8 col-md-7 col-lg-6">
+                        <div className="col-xs-12 col-sm-8 col-md-7 col-lg-6 col-xl-4">
 
                             <div className="d-flex p-3">
                                 <TextField name="text" defaultValue={text} label="Search" variant="filled" className="me-2 w-100" />
@@ -63,11 +63,11 @@ export default async function Search({ searchParams }: SearchPageProps) {
                         </div>
                     </div>
                     <div className="row justify-content-center mx-0">
-                        <div className="col-xs-12 col-md-6 col-lg-5 col-xl-4 px-3 pt-3">
+                        <div className="col-xs-12 col-md-6 col-lg-5 col-xl-3 px-3 pt-3">
                             <AutocompleteComponent />
                         </div>
 
-                        <div className="col-xs-12 col-md-6 col-lg-5 col-xl-4 px-3 py-3">
+                        <div className="col-xs-12 col-md-6 col-lg-5 col-xl-3 px-3 py-3">
                             <MultipleSelectCheckmarks booksArray={bookIdArray} initialSelectedBooks={booksArray} />
                         </div>
                     </div>
