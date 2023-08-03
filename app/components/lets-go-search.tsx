@@ -13,7 +13,7 @@ export default function LetsGoSearch() {
 
             <div className="row w-100 justify-content-center">
                 <div className="col-xs-12 col-sm-8 col-md-6 col-xl-5">
-                    <div className="text-center pt-4 main-text" style={{ fontSize: "xxx-large" }}>Lelo</div>
+                    <div className="text-center pt-4 main-text" style={{ fontSize: "8vh" }}>Lelo</div>
                     <form action="/search">
                         <input className="d-none" type="text" name="bibleVersion" defaultValue={DEFAULT_BIBLE?.id} />
 
