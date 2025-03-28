@@ -1,6 +1,8 @@
 # Bible Search
 Production: [https://verse-search.vercel.app/](https://verse-search.vercel.app/)
 
+![biblesearch, my site](./public/bible-search.png)
+
 ### Description
 
 It is a search tool where user can find bible verses related to a specifc keyword. User can also filter by book and change between bible versions.
