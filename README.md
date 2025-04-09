@@ -30,14 +30,3 @@ One of the main challenges was working with the external Bible API. The document
 
 #### 2. Making Searches Shareable
 Another tricky part was updating the URL with the user's keyword so they could copy the link and share it with friends. Since the app uses Next.js and client-side routing, I had to learn how to work with query parameters in a way that kept the search state in sync with the URL. This was a new concept for me, and it took some time to get right.
-
----
-
-## Getting Started
-
-```bash
-# Install dependencies (uses Bun)
-bun install
-
-# Run in dev mode
-bun dev
